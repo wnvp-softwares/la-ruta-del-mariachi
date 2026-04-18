@@ -1,0 +1,5 @@
+#* Ignorar la carpeta de Node Modules a la hora de hacer PUSH
+/node_modules
+
+#* Ignorar el archivo de variables de entorno a la hora de hacer PUSH
+.env
