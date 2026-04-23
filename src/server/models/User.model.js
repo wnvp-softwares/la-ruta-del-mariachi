@@ -1,12 +1,11 @@
 import { DataTypes } from 'sequelize'
-import sequelize from '../config/database.mysql.config'
-// import sequelize from '../config/database.postgres.config'
+import sequelize from '../config/database.config.js'
 
 const User = sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true 
     },
     username: {
         type: DataTypes.STRING(50),
@@ -20,11 +19,16 @@ const User = sequelize.define('User', {
     profileIcon: {
         type: DataTypes.STRING(255),
         allowNull: false
+    },
+    lastLogin: {
+        type: DataTypes.DATE,
+        allowNull: true
     }
 }, {
     tableName: 'users',
-    underscored: true,
-    timestamps: true
+    timestamps: true, 
+    createdAt: 'createdAt',
+    updatedAt: false 
 })
 
 export default User
