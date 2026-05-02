@@ -3,6 +3,10 @@ import cors from 'cors';
 import 'dotenv/config';
 import sequelize from './config/database.config.js';
 
+//w: Importación de Swagger - @wnvp-softwares
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './config/swagger.config.js';
+
 // Importación de todos los routers
 import authRoutes from './routes/auth.routes.js';
 import placesRoutes from './routes/places.routes.js';
@@ -24,7 +28,13 @@ app.use('/api/auth', authRoutes);
 app.use('/api/places', placesRoutes);
 app.use('/api/routes', routeRoutes);
 app.use('/api/progress', progressRoutes);
-app.use('/api/rewards', rewardsRoutes);
+app.use('/api/rewards', rewardsRoutes)
+
+// ==========================================
+// DEFINICIÓN DE ENDPOINTS PARA DOCUMENTACIÓN
+// ==========================================
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // ==========================================
 // SINCRONIZACIÓN Y ARRANQUE
