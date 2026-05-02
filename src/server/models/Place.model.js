@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize'
-import sequelize from '../config/database.mysql.config'
-// import sequelize from '../config/database.postgres.config'
+import sequelize from '../config/database.config.js'
 
 const Place = sequelize.define('Place', {
     id: {
@@ -16,6 +15,10 @@ const Place = sequelize.define('Place', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    imageUrl: {
+        type: DataTypes.STRING(255),
+        allowNull: true 
+    },
     latitude: {
         type: DataTypes.DECIMAL(9, 6),
         allowNull: false
@@ -26,8 +29,7 @@ const Place = sequelize.define('Place', {
     }
 }, {
     tableName: 'places',
-    underscored: true,
-    timestamps: false
+    timestamps: false 
 })
 
 export default Place

@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize'
 import sequelize from '../config/database.config.js'
 
-const Route = sequelize.define('Route', {
+const Reward = sequelize.define('Reward', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -14,10 +14,14 @@ const Route = sequelize.define('Route', {
     description: {
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    iconUrl: {
+        type: DataTypes.STRING(255),
+        allowNull: false
     }
 }, {
-    tableName: 'routes',
+    tableName: 'rewards',
     timestamps: false
 })
 
-export default Route
+export default Reward

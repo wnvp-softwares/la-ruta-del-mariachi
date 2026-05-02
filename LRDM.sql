@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS places (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
+    imageUrl VARCHAR(255),
     latitude DECIMAL(9,6) NOT NULL,
     longitude DECIMAL(9,6) NOT NULL,
     PRIMARY KEY (id)
@@ -91,7 +92,40 @@ CREATE TABLE IF NOT EXISTS visited_places (
     id INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
     placeId INT NOT NULL,
+    visitedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (placeId) REFERENCES places(id) ON DELETE CASCADE
+);
+
+-- NUEVAS TABLAS
+CREATE TABLE IF NOT EXISTS user_route_progress (
+    id INT NOT NULL AUTO_INCREMENT,
+    userId INT NOT NULL,
+    routeId INT NOT NULL,
+    status VARCHAR(20) DEFAULT 'in_progress',
+    completedAt DATETIME NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (routeId) REFERENCES routes(id) ON DELETE CASCADE
+);
+
+-- Catálogo de Recompensas
+CREATE TABLE IF NOT EXISTS rewards (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    iconUrl VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+-- Tabla pivote de Recompensas del Usuario
+CREATE TABLE IF NOT EXISTS user_rewards (
+    id INT NOT NULL AUTO_INCREMENT,
+    userId INT NOT NULL,
+    rewardId INT NOT NULL,
+    earnedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (rewardId) REFERENCES rewards(id) ON DELETE CASCADE
 );
