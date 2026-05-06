@@ -105,18 +105,56 @@ body {
     gap: 20px;
     align-items: center;
 }
+/* BOTONES CON ICONO */
 
 .btn {
-    width: 280px;
-    padding: 18px;
-    border-radius: 12px;
+    padding: 12px 16px;
+    border-radius: 14px;
     text-decoration: none;
     color: white;
-    font-weight: bold;
-    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 🔥 centra horizontal */
+    gap: 12px;
+
+    text-align: center; /* 🔥 centra texto */
+
     transition: all 0.3s ease;
-    display: inline-block;
     cursor: pointer;
+
+    width: auto;
+}
+/* ICONO */
+
+.btn .icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* TEXTO */
+
+.btn .text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    align-items: center;
+}
+
+/* TEXTO PEQUEÑO */
+
+.btn .text small {
+    font-size: 10px;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+/* TEXTO GRANDE */
+
+.btn .text span {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .android {
