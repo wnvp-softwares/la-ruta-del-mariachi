@@ -135,4 +135,19 @@ export const style = StyleSheet.create({
 
         marginBottom: 15,
     },
+
+    //w: Estilo de carta de presentacion "Presentation Card" - @wnvp-softwares
+
+    presentationCard: {
+        alignItems: "center",
+        justifyContent: "center",
+
+        width: "90%",
+
+        margin: 0,
+        padding: 10,
+        borderRadius: 20,
+
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
+    },
 });
