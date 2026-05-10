@@ -4,6 +4,8 @@ export const theme = {
         colorComponentPrimary: "#647FBC",
         whiteText: "#FFFFFF",
         colorText: "#647FBC",
+
+        llamative: "#DAA464",
     },
     
 };

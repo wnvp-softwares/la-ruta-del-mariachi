@@ -20,7 +20,7 @@ import {
 } from "../hooks";
 import { useState } from "react";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
     const { view, goToLogin, goToSignUp, goToIntro } = useView();
 
     const [message, setMessage] = useState("");
@@ -107,6 +107,8 @@ export default function LoginScreen() {
 
             setMessage(data.message);
             setUser(data.user);
+
+            navigation.navigate("Main", { user: data.user });
 
             return {
                 success: true,

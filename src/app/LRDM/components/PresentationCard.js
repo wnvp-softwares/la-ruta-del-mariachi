@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import {
     View,
     Text,
-    Image
+    Image,
+    TouchableOpacity
 } from "react-native";
 
 import { style } from "../styles/globalStyle";
@@ -24,7 +25,7 @@ export default function PresentationCard({
 
     return (
 
-        <View>
+        <View style={style.presentationCard}>
 
             <Image
                 source={imageSource}
@@ -40,9 +41,17 @@ export default function PresentationCard({
                 {userName}
             </Text>
 
-            <Text style={style.colorItemText}>
+            <Text style={[style.colorItemText, { marginBottom: 20}]}>
                 ¡Bienvenido a La Ruta del Mariachi!
             </Text>
+
+            <TouchableOpacity
+                style={style.buttonColor}
+            >
+                <Text style={style.colorItemText}>
+                    Editar Perfil
+                </Text>
+            </TouchableOpacity>
 
         </View>
 

@@ -145,9 +145,51 @@ export const style = StyleSheet.create({
         width: "90%",
 
         margin: 0,
-        padding: 10,
+        padding: 20,
         borderRadius: 20,
 
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        backgroundColor: "rgba(0, 0, 0, 0.4)",
     },
+
+    userIcon: {
+        width: 200,
+        height: 200,
+
+        borderRadius: 50,
+
+        marginBottom: 10,
+    },
+
+    llamativeButton: {
+        width: "80%",
+        height: 50,
+
+        alignItems: "center",
+        justifyContent: "center",
+
+        borderRadius: 25,
+
+        backgroundColor: theme.COLORS.llamative
+    },
+
+    buttonsIcon: {
+        width: 80,
+        height: 80,
+    },
+
+    midButton: {
+        width: 120,
+        height: 120,
+
+        borderRadius: 20,
+        borderColor: theme.COLORS.whiteText,
+        borderWidth: 1,
+
+        backgroundColor: theme.COLORS.colorComponentPrimary,
+
+        alignItems: "center",
+        justifyContent: "center",
+
+        margin: 10
+    }
 });
