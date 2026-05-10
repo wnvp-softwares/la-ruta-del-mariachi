@@ -1,5 +1,6 @@
-import { Router } from 'express'
-import { registerUser, loginUser } from '../controllers/auth.controller.js'
+import { Router } from 'express';
+import { registerUser, loginUser, editProfile } from '../controllers/auth.controller.js';
+import { upload } from '../config/multer.config.js';
 
 const router = Router()
 
@@ -153,5 +154,7 @@ router.post('/register', registerUser)
  *         description: Error interno del servidor
  */
 router.post('/login', loginUser)
+
+router.put('/edit/:id', upload.single('profileIcon'), editProfile)
 
 export default router

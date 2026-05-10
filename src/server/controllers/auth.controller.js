@@ -69,3 +69,55 @@ export const loginUser = async (req, res) => {
         res.status(500).json({ message: 'Error interno del servidor.' });
     }
 };
+
+// ==========================================
+// EDITAR PERFIL DE USUARIO
+// ==========================================
+export const editProfile = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { username, password } = req.body;
+        let profileIcon = req.body.profileIcon;
+
+        if (req.file) {
+            profileIcon = req.file.filename;
+        }
+
+        const user = await User.findByPk(id);
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado.' });
+        }
+
+        if (username && username !== user.username) {
+            const existingUser = await User.findOne({ where: { username } });
+            if (existingUser) {
+                return res.status(400).json({ message: 'El nombre de usuario ya está en uso.' });
+            }
+            user.username = username;
+        }
+
+        if (password) {
+            const salt = await bcrypt.genSalt(10);
+            user.password = await bcrypt.hash(password, salt);
+        }
+
+        if (profileIcon) {
+            user.profileIcon = profileIcon;
+        }
+
+        await user.save();
+
+        res.status(200).json({
+            message: 'Perfil actualizado con éxito',
+            user: {
+                id: user.id,
+                username: user.username,
+                profileIcon: user.profileIcon
+            }
+        });
+
+    } catch (error) {
+        console.error('Error en editProfile:', error);
+        res.status(500).json({ message: 'Error interno al actualizar el perfil.' });
+    }
+};
